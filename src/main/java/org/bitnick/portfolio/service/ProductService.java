@@ -42,10 +42,10 @@ public class ProductService {
 
         try {
             productToUpdate = productRepository.getOne(id);
-            productToUpdate.setName(productToUpdate.getName());
-            productToUpdate.setDescription(productToUpdate.getDescription());
-            productToUpdate.setType(productToUpdate.getType());
-            productToUpdate.setCategory(productToUpdate.getCategory());
+            productToUpdate.setName(product.getName());
+            productToUpdate.setDescription(product.getDescription());
+            productToUpdate.setType(product.getType());
+            productToUpdate.setCategory(product.getCategory());
 
             return productRepository.save(productToUpdate);
         } catch (Exception ex) {
