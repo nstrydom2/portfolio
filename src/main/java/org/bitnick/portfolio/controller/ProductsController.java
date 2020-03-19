@@ -10,10 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/product")
@@ -31,22 +28,22 @@ public class ProductsController {
     @RequestMapping(path = "{id}", method = RequestMethod.GET)
     @ApiOperation("Gets the product with specific id")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Product.class)})
-    public Object getProduct(@PathVariable(name = "id") String id) {
-        return new Object();
+    public Product getProduct(@PathVariable(name = "id") String id) {
+        return productService.getProduct(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Object saveProduct(@PathVariable(name = "id") String id) {
-        return new Object();
+    public Product saveProduct(@RequestBody Product productToSave) {
+        return productService.saveProduct(productToSave);
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Object updateProduct(@PathVariable(name = "id") String id) {
-        return new Object();
+    public Product updateProduct(@RequestBody Product productToUpdate, @PathVariable(name = "id") String id) {
+        return productService.updateProduct(productToUpdate, id);
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.DELETE)
     public void deleteProduct(@PathVariable(name = "id") String id) {
-        // delete
+        productService.deleteProduct(id);
     }
 }

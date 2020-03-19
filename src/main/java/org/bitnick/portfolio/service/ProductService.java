@@ -46,8 +46,8 @@ public class ProductService {
             productToUpdate.setDescription(productToUpdate.getDescription());
             productToUpdate.setType(productToUpdate.getType());
             productToUpdate.setCategory(productToUpdate.getCategory());
-            return productRepository.save(productToUpdate);
 
+            return productRepository.save(productToUpdate);
         } catch (Exception ex) {
             LOG.error("An error occurred during update of product" + ex.getMessage());
 

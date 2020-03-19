@@ -46,8 +46,8 @@ public class UserService {
             userToUpdate.setPassword(user.getPassword());
             userToUpdate.setEmail(user.getEmail());
             userToUpdate.setLegalName(user.getLegalName());
-            return userRepository.save(userToUpdate);
 
+            return userRepository.save(userToUpdate);
         } catch (Exception ex) {
             LOG.error("An error occurred during update of product" + ex.getMessage());
 
