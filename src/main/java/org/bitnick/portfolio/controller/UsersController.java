@@ -28,7 +28,7 @@ public class UsersController {
     @RequestMapping(path = "{id}", method = RequestMethod.GET)
     @ApiOperation("Gets the product with specific id")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = User.class)})
-    public Object getUser(@PathVariable(name = "id") String id) {
+    public User getUser(@PathVariable(name = "id") String id) {
         return userService.getUser(id);
     }
 
