@@ -29,21 +29,21 @@ public class UsersController {
     @ApiOperation("Gets the product with specific id")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = User.class)})
     public Object getUser(@PathVariable(name = "id") String id) {
-        return new Object();
+        return userService.getUser(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Object saveUser(@RequestBody User userToSave) {
-        return new Object();
+    public User saveUser(@RequestBody User userToSave) {
+        return userService.saveUser(userToSave);
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Object updateUser(@RequestBody User userToUpdate, @PathVariable(name = "id") String id) {
-        return new Object();
+    public User updateUser(@RequestBody User userToUpdate, @PathVariable(name = "id") String id) {
+        return userService.updateUser(userToUpdate, id);
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.DELETE)
     public void deleteUser(@PathVariable(name = "id") String id) {
-        // delete
+        userService.deleteUser(id);
     }
 }
