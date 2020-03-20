@@ -1,4 +1,4 @@
-package org.bitnick.portfolio.controller;
+package org.bitnick.portfolio.controller.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
