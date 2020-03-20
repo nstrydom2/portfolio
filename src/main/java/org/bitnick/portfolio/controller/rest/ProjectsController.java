@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class ProjectsController {
     private ProjectsService projectsService;
 
-    private Logger LOG = LoggerFactory.getLogger(UsersController.class);
+    private Logger LOG = LoggerFactory.getLogger(ProjectsController.class);
 
     @Autowired
     public void setProjectsService(ProjectsService projectsService) {
