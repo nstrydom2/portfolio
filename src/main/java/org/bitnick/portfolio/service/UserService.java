@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private UserRepository userRepository;
 
-    private Logger LOG = LoggerFactory.getLogger(ProductService.class);
+    private Logger LOG = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     public void setProductRepository(UserRepository userRepository) {
