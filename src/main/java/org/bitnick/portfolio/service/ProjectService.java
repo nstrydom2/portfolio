@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectService {
     private ProjectRepository projectRepository;
@@ -21,6 +23,11 @@ public class ProjectService {
     public Project getProject(String id) {
         LOG.info("Getting the product with the given id: " + id);
         return projectRepository.getOne(id);
+    }
+
+    public List<Project> getAllProjects() {
+        LOG.info("Getting all projects...");
+        return projectRepository.findAll();
     }
 
     public Project saveProject(Project project) {
