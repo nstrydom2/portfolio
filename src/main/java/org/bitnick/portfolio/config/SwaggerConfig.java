@@ -16,7 +16,7 @@ public class SwaggerConfig {
 
         Docket docket =  new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.bitnick.portfolio"))
+                .apis(RequestHandlerSelectors.basePackage("org.bitnick.portfolio.controller.rest"))
                 .paths(PathSelectors.any())
                 .build();
 
