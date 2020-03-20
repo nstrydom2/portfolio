@@ -4,6 +4,7 @@ import org.bitnick.portfolio.model.User;
 import org.bitnick.portfolio.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,6 +13,7 @@ public class UserService {
 
     private Logger LOG = LoggerFactory.getLogger(ProductService.class);
 
+    @Autowired
     public void setProductRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
