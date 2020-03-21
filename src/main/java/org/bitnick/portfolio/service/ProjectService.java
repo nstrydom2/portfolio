@@ -34,7 +34,7 @@ public class ProjectService {
         Project projectToSave = null;
 
         try {
-            LOG.info("Saving user...");
+            LOG.info("Saving project...");
 
             projectToSave = projectRepository.save(project);
 
