@@ -16,7 +16,7 @@ import java.util.HashSet;
 @RestController
 @RequestMapping(path = "/api/algorithm")
 @Api(value = "AlgorithmControllerAPI", produces = MediaType.APPLICATION_JSON_VALUE)
-public class AlgorithmController {
+public class AlgorithmsController {
     private AlgorithmService algorithmService;
 
     @Autowired
@@ -24,8 +24,10 @@ public class AlgorithmController {
         this.algorithmService = algorithmService;
     }
 
-    @RequestMapping(path = "dubplicate/remove", method = RequestMethod.POST)
+    @RequestMapping(path = "duplicate/remove", method = RequestMethod.POST)
     public String[] removeDuplicates(@RequestBody String[] array) {
         return algorithmService.removeDuplicates(array);
     }
+
+    
 }
