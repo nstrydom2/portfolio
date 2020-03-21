@@ -24,8 +24,9 @@ public class HomeController {
     public String index(Model model) {
         List<Project> projects = projectService.getAllProjects();
 
-        model.addAttribute("welcome", "Hi, I'm Nick, a backend developer");
+        model.addAttribute("welcome", "Hi, I'm Nick, a Backend Developer");
         model.addAttribute("projects", projects);
+        model.addAttribute("email", "nstrydom@gmail.com");
 
         return "index";
     }
