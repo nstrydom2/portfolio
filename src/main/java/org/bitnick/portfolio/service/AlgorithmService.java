@@ -13,15 +13,17 @@ public class AlgorithmService {
 
     public Boolean binarySearch(Integer[] array, int targetNum) {
         int first = 0;
-        int mid = array.length;
-        int last = array.length - 1;
+        int mid = array.length / 2;
+        int last = array.length;
 
-        if (targetNum < array[mid]) {
-            return binarySearch(Arrays.copyOfRange(array, first, mid), targetNum);
-        } else if (targetNum > array[mid]) {
-            return binarySearch(Arrays.copyOfRange(array, mid, last), targetNum);
-        } else if (targetNum == array[mid]) {
-            return true;
+        if (last > 1) {
+            if (targetNum < array[mid]) {
+                return binarySearch(Arrays.copyOfRange(array, first, mid), targetNum);
+            } else if (targetNum > array[mid]) {
+                return binarySearch(Arrays.copyOfRange(array, mid, last), targetNum);
+            } else {
+                return targetNum == array[mid];
+            }
         } else {
             return false;
         }
