@@ -29,10 +29,25 @@ public class AlgorithmsController {
     }
 
     @RequestMapping(path = "binarysearch/{num}", method = RequestMethod.POST)
-    public Boolean binarySearch(@RequestBody Integer[] array, @PathVariable("num") int num) {
+    public BinarySearchResult binarySearch(@RequestBody Integer[] array, @PathVariable("num") int num) {
         Arrays.sort(array);
 
-        return algorithmService.binarySearch(array, num);
+        BinarySearchResult binarySearchResult = new BinarySearchResult();
+        binarySearchResult.setResult(algorithmService.binarySearch(array, num));
+
+        return binarySearchResult;
+    }
+
+    private class BinarySearchResult {
+        private boolean result;
+
+        public boolean isResult() {
+            return result;
+        }
+
+        public void setResult(boolean result) {
+            this.result = result;
+        }
     }
 
     @RequestMapping(path = "bubblesort", method = RequestMethod.POST)
