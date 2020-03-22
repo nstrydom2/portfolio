@@ -28,4 +28,19 @@ public class AlgorithmService {
             return false;
         }
     }
+
+    public Integer[] bubbleSort(Integer[] array, int n) {
+        if (n == 1)
+            return array;
+
+        for (int iter = 0; iter < n - 1; iter++) {
+            if (array[iter] > array[iter + 1]) {
+                int temp = array[iter + 1];
+                array[iter + 1] = array[iter];
+                array[iter] = temp;
+            }
+        }
+
+        return bubbleSort(array, n - 1);
+    }
 }

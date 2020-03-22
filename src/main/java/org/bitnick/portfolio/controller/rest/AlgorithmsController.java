@@ -35,11 +35,8 @@ public class AlgorithmsController {
         return algorithmService.binarySearch(array, num);
     }
 
-    private class BinarySearchResult {
-        boolean result;
-
-        BinarySearchResult(boolean result) {
-            this.result = result;
-        }
+    @RequestMapping(path = "bubblesort", method = RequestMethod.POST)
+    public Integer[] bubbleSort(@RequestBody Integer[] array) {
+        return algorithmService.bubbleSort(array, array.length);
     }
 }
