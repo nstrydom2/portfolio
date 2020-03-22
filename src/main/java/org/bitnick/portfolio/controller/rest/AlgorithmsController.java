@@ -39,4 +39,9 @@ public class AlgorithmsController {
     public Integer[] bubbleSort(@RequestBody Integer[] array) {
         return algorithmService.bubbleSort(array, array.length);
     }
+
+    @RequestMapping(path = "shellsort", method = RequestMethod.POST)
+    public Integer[] shellSort(@RequestBody Integer[] array) {
+        return algorithmService.shellSort(array);
+    }
 }
