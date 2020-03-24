@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <style>
+        body {
+            height: 100%;
+            background-color: #BFFFB2;
+        }
+
+        .wrapper {
+              height: 100%;
+              display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+              display: -ms-flexbox;  /* TWEENER - IE 10 */
+              display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+              display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
+              justify-content: center;
+              align-items: center;
+        }
+
+        .maindiv {
+            max-width: 50%;
+            padding: 10px;
+        }
+
+        .linksdiv {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var toggleTable = function() {
+            var mytable = document.getElementById("mytable")
+
+            if (mytable.style.visibility == "collapse") {
+                mytable.style.visibility = "visible";
+            } else {
+                mytable.style.visibility = "collapse";
+            }
+        }
+    </script>
+    <div class="wrapper">
+        <br />
+        <div class="maindiv">
+            <h1 th:text="${welcome}"/>
+            <div class="linksdiv">
+                <a href="#" onclick=toggleTable()>Projects</a>
+                <a th:href="'mailto:' + ${email}">Email me</a>
+            </div>
+            <br />
+            <table>
+                <tbody id="mytable" style="visibility:collapse">
+                <th:block th:each="project: ${projects}">
+                    <tr>
+                        <td th:text="${project.name}" style="padding-right:25px;"/>
+                        <td><a th:href="${project.appUrl}">App</a></td>
+                        <td><a th:href="${project.sourceUrl}">Source</a></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+            <br />
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/config/SwaggerConfig.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/PortfolioApplication.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/controller/rest/UsersController.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/service/ProjectService.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/model/Product.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/model/Project.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/controller/rest/ProductsController.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/repository/ProductRepository.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/service/ProductService.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/repository/UserRepository.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/repository/ProjectRepository.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/controller/rest/AlgorithmsController.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/service/UserService.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/service/AlgorithmService.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/controller/rest/ProjectsController.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/controller/HomeController.java
+/home/ghost/IdeaProjects/portfolio/src/main/java/org/bitnick/portfolio/model/User.java
