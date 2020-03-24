@@ -9,15 +9,15 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class Product implements Serializable {
+public class Project implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     private String name;
-    private String description;
-    private String type;
-    private String category;
+    private String appUrl;
+    private String sourceUrl;
 
     public String getId() {
         return id;
@@ -35,27 +35,19 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAppUrl() {
+        return appUrl;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAppUrl(String appUrl) {
+        this.appUrl = appUrl;
     }
 
-    public String getType() {
-        return type;
+    public String getSourceUrl() {
+        return sourceUrl;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public void setSourceUrl(String sourceUrl) {
+        this.sourceUrl = sourceUrl;
     }
 }
