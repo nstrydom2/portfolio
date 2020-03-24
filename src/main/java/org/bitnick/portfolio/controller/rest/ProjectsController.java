@@ -11,7 +11,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 @RequestMapping("/api/project")
-//@ApiIgnore
+@ApiIgnore
 public class ProjectsController {
     private ProjectService projectService;
 
