@@ -43,10 +43,6 @@
                 mytable.style.visibility = "collapse";
             }
         }
-
-        var openLink = function(link) {
-            window.open(link);
-        }
     </script>
     <div class="wrapper">
         <br />
@@ -62,8 +58,8 @@
                 <th:block th:each="project: ${projects}">
                     <tr>
                         <td th:text="${project.name}" style="padding-right:25px;"/>
-                        <td><a href="#"><script>window.open([[${project.appUrl}]]</script>App</a></td>
-                        <td><a href="#"><script>window.open([[${project.sourceUrl}]]</script>Source</a></td>
+                        <td><a href="#"><script>window.open([[${project.appUrl}]])</script>App</a></td>
+                        <td><a href="#"><script>window.open([[${project.sourceUrl}]])</script>Source</a></td>
                     </tr>
                 </th:block>
                 </tbody>
