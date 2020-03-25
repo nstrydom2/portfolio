@@ -43,6 +43,10 @@
                 mytable.style.visibility = "collapse";
             }
         }
+
+        var openLink = function(link) {
+            window.open(link)
+        }
     </script>
     <div class="wrapper">
         <br />
@@ -58,8 +62,8 @@
                 <th:block th:each="project: ${projects}">
                     <tr>
                         <td th:text="${project.name}" style="padding-right:25px;"/>
-                        <td><a th:href="${project.appUrl}">App</a></td>
-                        <td><a th:href="${project.sourceUrl}">Source</a></td>
+                        <td><a th:onclick="openLink(${project.appUrl})">App</a></td>
+                        <td><a th:onclick="openLink(${project.sourceUrl})">Source</a></td>
                     </tr>
                 </th:block>
                 </tbody>
