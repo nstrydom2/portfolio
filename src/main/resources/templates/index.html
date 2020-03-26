@@ -58,8 +58,8 @@
                 <th:block th:each="project: ${projects}">
                     <tr>
                         <td th:text="${project.name}" style="padding-right:25px;"/>
-                        <td><a th:onclick="var newWin1 = window.open('${project.appUrl}'. '_blank');newWin1.focus();">App</a></td>
-                        <td><a th:onclick="var newWin = window.open('${project.sourceUrl}', '_blank');newWin.focus();">Source</a></td>
+                        <td><a th:href="${project.appUrl}">App</a></td>
+                        <td><a th:href="${project.sourceUrl}">Source</a></td>
                     </tr>
                 </th:block>
                 </tbody>
