@@ -49,7 +49,7 @@ public class UserService {
     /**
      * Retrieves a mapped User entity by the given id.
      * @param id UUID of the target User entity to be retrieved
-     * @return User retrieved via id
+     * @return User, retrieved via id
      */
     public User getUser(String id) {
         LOG.info("Getting the product with the given id: " + id);
@@ -78,7 +78,8 @@ public class UserService {
     }
 
     /**
-     * Updates a User to the database.
+     * Updates a User to the database. Any exception thrown will be caught,
+     * logged, and a User object will be returned will "null" properties.
      * @param user User entity with modified properties to be updated
      * @param id UUID of target User to be updated
      * @return User, updated User entity
@@ -103,7 +104,7 @@ public class UserService {
     }
 
     /**
-     * Deletes a target User from the database.
+     * Deletes a target User from the database by the given id.
      * @param id UUID of target User to be deleted
      */
     public void deleteUser(String id) {
