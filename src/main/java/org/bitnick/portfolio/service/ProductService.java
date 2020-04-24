@@ -45,11 +45,21 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
+    /**
+     * Retrieves a mapped Product entity by the given id.
+     * @param id UUID of the target Project entity to be retrieved
+     * @return Product, retrieved via id
+     */
     public Product getProduct(String id) {
         LOG.info("Getting the product with the given id: " + id);
         return productRepository.getOne(id);
     }
 
+    /**
+     * Saves a Product entity to the database.
+     * @param product Product entity to be saved
+     * @return Product, saved Project entity
+     */
     public Product saveProduct(Product product) {
         Product productToSave = null;
 
@@ -67,6 +77,13 @@ public class ProductService {
         }
     }
 
+    /**
+     * Updates a Product to the database. Any exception thrown will be caught,
+     * logged, and a User object will be returned will "null" properties.
+     * @param product Product entity with modified properties to be updated
+     * @param id UUID of target Product to be updated
+     * @return Product, updated Product entity
+     */
     public Product updateProduct(Product product, String id) {
         Product productToUpdate = null;
 
@@ -85,6 +102,10 @@ public class ProductService {
         }
     }
 
+    /**
+     * Deletes a target Product from the database by the given id.
+     * @param id UUID of target Product to be deleted
+     */
     public void deleteProduct(String id) {
         try {
             productRepository.deleteById(id);
