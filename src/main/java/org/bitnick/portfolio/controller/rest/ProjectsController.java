@@ -23,6 +23,10 @@
  */
 package org.bitnick.portfolio.controller.rest;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.bitnick.portfolio.model.Product;
 import org.bitnick.portfolio.model.Project;
 import org.bitnick.portfolio.service.ProjectService;
 import org.slf4j.Logger;
@@ -46,21 +50,29 @@ public class ProjectsController {
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.GET)
+    @ApiOperation("Retrieves a product with a specific id")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Product.class)})
     public Project getProject(@PathVariable(name = "id") String id) {
         return projectService.getProject(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Saves a product")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Product.class)})
     public Project saveProject(@RequestBody Project projectToSave) {
         return projectService.saveProject(projectToSave);
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Updates a product with a specific id")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Product.class)})
     public Project updateProject(@RequestBody Project projectToUpdate, @PathVariable(name = "id") String id) {
         return projectService.updateProject(projectToUpdate, id);
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.DELETE)
+    @ApiOperation("Deletes a product with a specific id")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Product.class)})
     public void deleteUser(@PathVariable(name = "id") String id) {
         projectService.deleteProject(id);
     }

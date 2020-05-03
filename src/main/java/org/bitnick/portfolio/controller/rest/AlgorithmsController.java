@@ -25,6 +25,10 @@ package org.bitnick.portfolio.controller.rest;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.bitnick.portfolio.model.Product;
 import org.bitnick.portfolio.service.AlgorithmService;
 import org.bitnick.portfolio.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +51,15 @@ public class AlgorithmsController {
     }
 
     @RequestMapping(path = "duplicate/remove", method = RequestMethod.POST)
+    @ApiOperation("Removes duplicate values from an string array")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = String[].class)})
     public String[] removeDuplicates(@RequestBody String[] array) {
         return algorithmService.removeDuplicates(array);
     }
 
     @RequestMapping(path = "binarysearch/{num}", method = RequestMethod.POST)
+    @ApiOperation("Performs a binary search on an integer array")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = BinarySearchResult.class)})
     public BinarySearchResult binarySearch(@RequestBody Integer[] array, @PathVariable("num") int num) {
         Arrays.sort(array);
 
@@ -74,11 +82,15 @@ public class AlgorithmsController {
     }
 
     @RequestMapping(path = "bubblesort", method = RequestMethod.POST)
+    @ApiOperation("Performs a standard bubble sort on an integer array")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Integer[].class)})
     public Integer[] bubbleSort(@RequestBody Integer[] array) {
         return algorithmService.bubbleSort(array, array.length);
     }
 
     @RequestMapping(path = "shellsort", method = RequestMethod.POST)
+    @ApiOperation("Performs a standard shell sort on an integer array")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Integer[].class)})
     public Integer[] shellSort(@RequestBody Integer[] array) {
         return algorithmService.shellSort(array);
     }

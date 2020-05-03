@@ -49,23 +49,29 @@ public class ProductsController {
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.GET)
-    @ApiOperation("Gets the product with specific id")
+    @ApiOperation("Retrieves a product with a specific id")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Product.class)})
     public Product getProduct(@PathVariable(name = "id") String id) {
         return productService.getProduct(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Saves a product")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Product.class)})
     public Product saveProduct(@RequestBody Product productToSave) {
         return productService.saveProduct(productToSave);
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Updates a product with a specific id")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Product.class)})
     public Product updateProduct(@RequestBody Product productToUpdate, @PathVariable(name = "id") String id) {
         return productService.updateProduct(productToUpdate, id);
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.DELETE)
+    @ApiOperation("Deletes a product with a specific id")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK")})
     public void deleteProduct(@PathVariable(name = "id") String id) {
         productService.deleteProduct(id);
     }
