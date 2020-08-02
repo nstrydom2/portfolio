@@ -42,23 +42,21 @@
         }
 
         .linksdiv a {
-<<<<<<< Updated upstream
-            font-family: "Lucida Console";
-            text-decoration: none;
-            color: #eeaa7b;
-        }
-=======
             display: inline;
             text-decoration: none;
             padding-right: 20px;
             color: #00eb4c;
          }
 
-        .linksdiv ul {
+        .linksdiv  {
             color: #00eb4c;
         }
 
->>>>>>> Stashed changes
+        .mytable a {
+            text-decoration: none;
+            padding-right: 20px;
+            color: #00eb4c;
+        }
     </style>
 </head>
 <body>
@@ -91,7 +89,23 @@
                 <a id="projects" href="#" onclick=toggleTable() onmouseover=linkHoverEffect(document.getElementById("projects")) onmouseout=defaultText(document.getElementById("projects"))>-projects-</a>
                 <a id="email" th:href="'mailto:' + ${email}" onmouseover=linkHoverEffect(document.getElementById("email")) onmouseout=defaultText(document.getElementById("email"))>-email_me-</a>
             </div>
+<<<<<<< Updated upstream
 
+=======
+            <br />
+            <table>
+                <tbody class="mytable" id="mytable" style="visibility:collapse">
+                <th:block th:each="project: ${projects}">
+                    <tr>
+                        <td th:text="${project.name}" style="padding-right:25px;"/>
+                        <td><a th:href="${project.appUrl}">App</a></td>
+                        <td><a th:href="${project.sourceUrl}">Source</a></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+            <br />
+>>>>>>> Stashed changes
         </div>
         <br />
         <table>
