@@ -6,7 +6,9 @@
     <style>
         body {
             height: 100%;
-            background-color: #BFFFB2;
+            background-color: #202020;
+            font-family: monospace;
+            color: #19ff64;
         }
 
         .wrapper {
@@ -28,8 +30,19 @@
         .linksdiv {
             margin: auto;
             width: 50%;
-            padding: 10px;
         }
+
+        .linksdiv a {
+            display: inline;
+            text-decoration: none;
+            padding-right: 20px;
+            color: #00eb4c;
+         }
+
+        .linksdiv ul {
+            color: #00eb4c;
+        }
+
     </style>
 </head>
 <body>
@@ -43,14 +56,24 @@
                 mytable.style.visibility = "collapse";
             }
         }
+
+        var linkHoverEffect = function(element) {
+            element.innerHTML = element.innerHTML.replace("-", "[");
+            element.innerHTML = element.innerHTML.replace("-", "]");
+        }
+
+        var defaultText = function(element) {
+            element.innerHTML = element.innerHTML.replace("[", "-");
+            element.innerHTML = element.innerHTML.replace("]", "-");
+        }
     </script>
     <div class="wrapper">
         <br />
         <div class="maindiv">
             <h1 th:text="${welcome}"/>
-            <div class="linksdiv">
-                <a href="#" onclick=toggleTable()>Projects</a>
-                <a th:href="'mailto:' + ${email}">Email me</a>
+            <div class="linksdiv" onload=>
+                <a id="projects" href="#" onclick=toggleTable() onmouseover=linkHoverEffect(document.getElementById("projects")) onmouseout=defaultText(document.getElementById("projects"))>-projects-</a>
+                <a id="email" th:href="'mailto:' + ${email}" onmouseover=linkHoverEffect(document.getElementById("email")) onmouseout=defaultText(document.getElementById("email"))>-email_me-</a>
             </div>
             <br />
             <table>
