@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuck Norris</title>
+    <style>
+        body {
+            height: 100%;
+            background-color: #ECEBEB;
+        }
+
+        .wrapper {
+              height: 100%;
+              display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+              display: -ms-flexbox;  /* TWEENER - IE 10 */
+              display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+              display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+
+              justify-content: center;
+              align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // sleep time expects milliseconds
+        var sleep = function(time) {
+            return new Promise((resolve) => setTimeout(resolve, time));
+        }
+
+        var update = async function() {
+            while (true) {
+                getResponse();
+                await sleep(7000);
+            }
+        }
+
+        var getResponse = async function() {
+            const url = 'https://api.chucknorris.io/jokes/random';
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+             });
+
+            const json = await response.json();
+
+            if (response.status >= 200 && response.status < 400) {
+                console.log(json.value);
+                document.getElementById('chuck_header').innerHTML = json.value;
+            } else {
+                console.log('error -- ' + json.error);
+                docuemnt.getElemenetById('chuck_header').innerHTML = json.error;
+            }
+        }
+
+        window.onload = update()
+    </script>
+    <div class="wrapper">
+        <h3 id="chuck_header"></h3>
+    </div>
+</body>
+</html>
