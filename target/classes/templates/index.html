@@ -8,7 +8,7 @@
             height: 100%;
             background-color: #202020;
             font-family: monospace;
-            color: #19ff64;
+            color: #00eb4c;
         }
 
         .wrapper {
@@ -33,20 +33,25 @@
         }
 
         .linksdiv a {
-            display: inline;
             text-decoration: none;
             padding-right: 20px;
             color: #00eb4c;
          }
 
-        .linksdiv ul {
+        #mytable a {
+            text-decoration: none;
+            padding-right: 10px;
             color: #00eb4c;
-        }
+         }
+
+         #mytable a:hover {
+            text-decoration: underline;
+         }
 
     </style>
 </head>
 <body>
-    <script type="text/javascript">
+<script type="text/javascript">
         var toggleTable = function() {
             var mytable = document.getElementById("mytable")
 
@@ -71,7 +76,7 @@
         <br />
         <div class="maindiv">
             <h1 th:text="${welcome}"/>
-            <div class="linksdiv" onload=>
+            <div class="linksdiv">
                 <a id="projects" href="#" onclick=toggleTable() onmouseover=linkHoverEffect(document.getElementById("projects")) onmouseout=defaultText(document.getElementById("projects"))>-projects-</a>
                 <a id="email" th:href="'mailto:' + ${email}" onmouseover=linkHoverEffect(document.getElementById("email")) onmouseout=defaultText(document.getElementById("email"))>-email_me-</a>
             </div>
