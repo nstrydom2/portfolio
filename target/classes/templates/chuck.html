@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Chuck Norris</title>
-    <<link rel="stylesheet" href="/resources/static/css/design.css">
+    <link rel="stylesheet" th:href="@{/css/design.css}">
 </head>
-<body>
+<body class="wrapper">
     <script>
         // sleep time expects milliseconds
         var sleep = function(time) {
@@ -41,7 +41,7 @@
 
         window.onload = update()
     </script>
-    <div class="wrapper">
+    <div class="maindiv">
         <h3 id="chuck_header"></h3>
     </div>
 </body>

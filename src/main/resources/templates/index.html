@@ -5,8 +5,64 @@
     <title>Portfolio</title>
     <link rel="stylesheet" th:href="@{/css/design.css}">
 </head>
-<body>
+<body onload=greetingTextEffect()>
 <script type="text/javascript">
+        var getRandomNumber = function(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // sleep time expects milliseconds
+        var sleep = function(time) {
+            return new Promise((resolve) => setTimeout(resolve, time));
+        }
+
+        var greetingTextEffect = async function() {
+            var linksElement = document.getElementById("mylinks");
+            linksElement.style.visibility = "collapse";
+
+            var welcomeElement = document.getElementById("welcome");
+            var welcomeText = welcomeElement.innerHTML;
+
+            //console.log(welcomeText);
+
+            welcomeElement.innerHTML = "|";
+            await sleep(1000);
+
+            for (const c of welcomeText) {
+                welcomeElement.innerHTML = welcomeElement.innerHTML.replace("|", "");
+                welcomeElement.innerHTML += c + "|";
+
+                var randomTypoNum = getRandomNumber(7, 12);
+
+                if ((welcomeElement.innerHTML.length % 12) == 0) {
+                    var randomChar = String.fromCharCode(getRandomNumber(1, 26) + 96);
+
+                    welcomeElement.innerHTML = welcomeElement.innerHTML.replace("|", "");
+                    welcomeElement.innerHTML += randomChar + "|";
+
+                    await sleep(getRandomNumber(60, 140));
+
+                    welcomeElement.innerHTML = welcomeElement.innerHTML.replace("|", "");
+                    welcomeElement.innerHTML = welcomeElement.innerHTML.slice(0, -1) + "|";
+                }
+                await sleep(getRandomNumber(90, 175));
+            }
+
+            linksElement.style.visibility = "visible";
+
+            blinkCursorEffect(welcomeElement);
+        }
+
+        var blinkCursorEffect = async function(welcomeElement) {
+            while (true) {
+                welcomeElement.innerHTML = welcomeElement.innerHTML.slice(0, -1) + "_";
+                await sleep(1250);
+
+                welcomeElement.innerHTML = welcomeElement.innerHTML.slice(0, -1) + "|";
+                await sleep(1250);
+            }
+        }
+
         var toggleTable = function() {
             var mytable = document.getElementById("mytable")
 
@@ -30,8 +86,8 @@
     <div class="wrapper">
         <br />
         <div class="maindiv">
-            <h1 th:text="${welcome}"/>
-            <div class="linksdiv">
+            <h1 id="welcome" th:text="${welcome}"/>
+            <div id="mylinks" class="linksdiv">
                 <a id="projects" href="#" onclick=toggleTable() onmouseover=linkHoverEffect(document.getElementById("projects")) onmouseout=defaultText(document.getElementById("projects"))>-projects-</a>
                 <a id="email" th:href="'mailto:' + ${email}" onmouseover=linkHoverEffect(document.getElementById("email")) onmouseout=defaultText(document.getElementById("email"))>-email_me-</a>
             </div>
