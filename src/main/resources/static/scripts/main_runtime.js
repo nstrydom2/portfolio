@@ -116,7 +116,7 @@
 
     var checkCookie = function() {
         var expires = getCookie("expires");
-        if (expires != "" || expires != null) {
+        if (expires == "" || expires == null) {
             return false;
         }
 
