@@ -23,7 +23,6 @@
  */
 package org.bitnick.portfolio.controller.rest;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
