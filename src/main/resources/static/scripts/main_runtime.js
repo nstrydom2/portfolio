@@ -16,7 +16,7 @@
 
         //console.log(welcomeText);
         try {
-            if (true) {
+            if (!checkCookie()) {
                 welcomeElement.innerHTML = "|";
                 await sleep(1000);
 
@@ -93,7 +93,7 @@
         var d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
         var expires = "expires="+ d.toUTCString();
-        document.cookie = expires + ";SameSite=Lax;path=/";
+        document.cookie = expires + ";SameSite=None;Secure;path=/";
     }
 
     var getCookie = function(cname) {
