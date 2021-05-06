@@ -12,12 +12,21 @@
         <div class="maindiv">
             <h1 id="welcome" th:text="${welcome}"/>
             <div id="mylinks" class="linksdiv">
-                <a id="projects" href="#" onclick=toggleTable() onmouseover=linkHoverEffect(document.getElementById("projects")) onmouseout=defaultText(document.getElementById("projects"))>-projects-</a>
+                <a id="myresume" href="#" onclick=toggleTable() onmouseover=linkHoverEffect(document.getElementById("myresume")) onmouseout=defaultText(document.getElementById("myresume"))>-resume-</a>
+                <a id="myprojects" href="#" onclick=toggleTable() onmouseover=linkHoverEffect(document.getElementById("myprojects")) onmouseout=defaultText(document.getElementById("myprojects"))>-projects-</a>
                 <a id="email" th:href="'mailto:' + ${email}" onmouseover=linkHoverEffect(document.getElementById("email")) onmouseout=defaultText(document.getElementById("email"))>-email_me-</a>
             </div>
             <br />
+            <div id="content"></div>
+        </div>
+    </div>
+    <div id="element_cache" style="display:none">
+        <div id="resume">
+            <div id="myres"></div>
+        </div>
+        <div id="projects">
             <table>
-                <tbody id="mytable" style="visibility:collapse">
+                <tbody id="mytable">
                 <th:block th:each="project: ${projects}">
                     <tr>
                         <td th:text="${project.name}" style="padding-right:25px;"/>

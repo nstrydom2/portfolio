@@ -59,14 +59,39 @@ var blinkCursorEffect = async function(welcomeElement) {
     }
 }
 
-var toggleTable = function() {
-    var mytable = document.getElementById("mytable")
+var isProjects = false;
+var isResume = false;
 
-    if (mytable.style.visibility == "collapse") {
-        mytable.style.visibility = "visible";
-    } else {
-        mytable.style.visibility = "collapse";
+var toggleTable = function() {
+    var content = document.getElementById("content");
+    var projects = document.getElementById("projects");
+
+    if (!isProjects) {
+        content.innerHTML = "";
+        content.innerHTML = projects.innerHTML;
+        isProjects = true;
+
+        return;
     }
+
+    content.innerHTML = "";
+    isProjects = false;
+}
+
+var toggleResume = function() {
+    var content = document.getElementById("content");
+    var resume = document.getElementById("resume");
+
+    if (!isResume) {
+        content.innerHTML = "";
+        content.innerHTML = resume.innerHTML;
+        isResume = true;
+
+        return;
+    }
+
+    content.innerHTML = "";
+    isResume = false;
 }
 
 var linkHoverEffect = function(element) {
@@ -87,8 +112,6 @@ var dateInPast = function(firstDate, secondDate) {
   return false;
 }
 
-// enter some javascript here and it will run
-// on every page on this domain (location.host)
 var setCookie = function(exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
