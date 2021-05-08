@@ -17,6 +17,8 @@ var greetingTextEffect = async function() {
     //console.log(welcomeText);
     try {
         if (!checkCookie()) {
+            setCookie(30);
+
             welcomeElement.innerHTML = "|";
             await sleep(1000);
 
@@ -38,8 +40,6 @@ var greetingTextEffect = async function() {
                 }
                 await sleep(getRandomNumber(90, 175));
             }
-
-            setCookie(30);
         }
     } catch (err) {
 
@@ -116,7 +116,7 @@ var setCookie = function(exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
-    document.cookie = expires + ";SameSite=Lax;path=/";
+    document.cookie = expires + ";SameSite=None;path=/";
 }
 
 var getCookie = function(cname) {
@@ -140,11 +140,6 @@ var getCookie = function(cname) {
 var checkCookie = function() {
     var expires = getCookie("expires");
     if (expires == "" || expires == null) {
-        return false;
-    }
-
-    expires = Date.parse(expires);
-    if (dateInPast(expires, new Date())) {
         return false;
     }
 
