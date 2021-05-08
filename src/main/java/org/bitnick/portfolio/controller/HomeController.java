@@ -23,11 +23,10 @@
  */
 package org.bitnick.portfolio.controller;
 
-import org.bitnick.portfolio.model.Award;
-import org.bitnick.portfolio.model.Job;
-import org.bitnick.portfolio.model.Project;
-import org.bitnick.portfolio.model.Resume;
+import org.bitnick.portfolio.model.*;
 import org.bitnick.portfolio.service.ProjectService;
+import org.bitnick.portfolio.service.ResumeService;
+import org.bitnick.portfolio.service.WelcomeTextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +37,19 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+    private WelcomeTextService welcomeTextService;
+    private ResumeService resumeService;
     private ProjectService projectService;
+
+    @Autowired
+    public void setResumeService(ResumeService resumeService) {
+        this.resumeService = resumeService;
+    }
+
+    @Autowired
+    public void setWelcomeTextService(WelcomeTextService welcomeTextService) {
+        this.welcomeTextService = welcomeTextService;
+    }
 
     @Autowired
     public void setProjectService(ProjectService projectService) {
@@ -132,12 +143,14 @@ public class HomeController {
 
     @RequestMapping(path = "/")
     public String index(Model model) {
+        WelcomeText welcomeText = welcomeTextService.getLatest();
+        Resume resume = resumeService.getLatest();
         List<Project> projects = projectService.getAllProjects();
-        Resume resume = buildResume();
 
-        model.addAttribute("welcome", "Hello World! I'm Nick!");
+        model.addAttribute("welcome", welcomeText);
         model.addAttribute("resume", resume);
         model.addAttribute("projects", projects);
+        model.addAttribute("github", "https://github.com/nstrydom2");
         model.addAttribute("email", "nstrydom@gmail.com");
 
         return "index";
