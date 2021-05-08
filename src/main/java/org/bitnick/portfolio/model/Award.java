@@ -2,10 +2,10 @@ package org.bitnick.portfolio.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "awards")
 public class Award {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")

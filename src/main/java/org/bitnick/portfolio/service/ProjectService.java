@@ -99,6 +99,7 @@ public class ProjectService {
 
         try {
             projectToUpdate = projectRepository.getOne(id);
+            projectToUpdate.setDescription(project.getDescription());
             projectToUpdate.setName(project.getName());
             projectToUpdate.setAppUrl(project.getAppUrl());
             projectToUpdate.setSourceUrl(project.getSourceUrl());
