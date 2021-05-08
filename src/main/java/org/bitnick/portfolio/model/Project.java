@@ -25,16 +25,14 @@ package org.bitnick.portfolio.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Project entity mapped to "project" table
  */
 @Entity
+@Table(name = "projects")
 public class Project implements Serializable {
 
     @Id
@@ -42,6 +40,7 @@ public class Project implements Serializable {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
     private String name;
+    private String description;
     private String appUrl;
     private String sourceUrl;
 
@@ -59,6 +58,14 @@ public class Project implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getAppUrl() {
