@@ -31,14 +31,6 @@ pipeline {
                 sh "${MAVEN_HOME}/bin/mvn test"
             }
         }
-
-        //stage('Deploy') {
-            steps {
-                // Deploy the artifacts (if applicable)
-                // This stage can include deploying your application to a server or a container
-                // Adjust this stage based on your deployment requirements
-            }
-        }
     }
 
     post {
