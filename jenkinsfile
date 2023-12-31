@@ -1,16 +1,17 @@
+
 pipeline {
-    agent any
-
-    environment {
-        // Define the Maven installation name configured in Jenkins Global Tools
-        MAVEN_HOME = tool 'Maven'
-        PATH = "$MAVEN_HOME/bin:$PATH"
+  agent any
+  
+  environment {
+    function_name = 'aws-1-pepiline'
+  }
+  
+  stages {
+    stage('Build') {
+      steps {
+        // Build the Java project using Maven
+        sh 'mvn clean package'
+      }
     }
-
-        stage('Build') {
-            steps {
-                // Build the Java project using Maven
-                sh "${MAVEN_HOME}/bin/mvn clean install"
-            }
-        }
+  }
 }
