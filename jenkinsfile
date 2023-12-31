@@ -2,15 +2,15 @@ pipeline {
     agent any
 
     environment {
-        function_name = 'java-sample'
+        // Define the Maven installation name configured in Jenkins Global Tools
+        MAVEN_HOME = tool 'Maven'
+        PATH = "$MAVEN_HOME/bin:$PATH"
     }
 
-    stages {
-
-        // CI Start
         stage('Build') {
             steps {
-                echo 'Build'
-                sh 'mvn package'
+                // Build the Java project using Maven
+                sh "${MAVEN_HOME}/bin/mvn clean install"
             }
         }
+}
