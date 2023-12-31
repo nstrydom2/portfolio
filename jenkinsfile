@@ -1,0 +1,16 @@
+pipeline {
+    agent { label 'master'}
+
+    environment {
+        function_name = 'java-sample'
+    }
+
+    stages {
+
+        // CI Start
+        stage('Build') {
+            steps {
+                echo 'Build'
+                sh 'mvn package'
+            }
+        }
