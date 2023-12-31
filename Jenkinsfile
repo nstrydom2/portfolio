@@ -43,4 +43,4 @@ pipeline {
             echo 'Build or tests failed. Please check the logs for details.'
         }
     }
-
+}
