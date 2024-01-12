@@ -20,9 +20,10 @@ pipeline {
                 // Configure AWS credentials and region
                 withCredentials([aws(credentialsId: 'AKIA3JMZJSW3TS3OQBUI', region: 'us-east-1')]) {
                     // Retrieve CodeArtifact domain and repository details
-                    def domain = 'arun'
-                    def repository = 'java-portfolio'
-
+                   sh {
+                     def domain = 'arun'
+                     def repository = 'java-portfolio'
+                   }
                     // Authenticate with CodeArtifact using AWS CLI
                     sh 'aws codeartifact login --tool maven --domain arun --repository java-portfolio'
 
