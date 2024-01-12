@@ -75,4 +75,12 @@
 		</plugins>
 	</build>
 
+<distributionManagement>
+  <repository>
+    <id>arun-java-portfolio</id>
+    <name>arun-java-portfolio</name>
+    <url>https://arun-776099960247.d.codeartifact.us-east-1.amazonaws.com/maven/java-portfolio/</url>
+  </repository>
+</distributionManagement>
+
 </project>
