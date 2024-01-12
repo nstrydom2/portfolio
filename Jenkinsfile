@@ -2,44 +2,54 @@ pipeline {
     agent any
 
     environment {
-        // Define the Maven installation name configured in Jenkins Global Tools
-        MAVEN_HOME = tool 'Maven'
-        PATH = "$MAVEN_HOME/bin:$PATH"
+        JAVA_HOME = tool 'JDK8'
     }
 
     stages {
-        stage('Setup Maven') {
+        stage('Checkout') {
             steps {
-                // Set up Maven using the configured tool
                 script {
-                    MAVEN_HOME = tool 'Maven'
-                    env.PATH = "$MAVEN_HOME/bin:$PATH"
+                    checkout scm
                 }
             }
         }
 
         stage('Build') {
             steps {
-                // Build the Java project using Maven
-                sh "${MAVEN_HOME}/bin/mvn clean install"
+                script {
+                    withMaven(maven: 'Maven') {
+                        sh 'mvn clean install'
+                    }
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    // Add deployment steps if needed
+                    // For example, deploying to a Tomcat server
+                    // sh 'mvn tomcat7:deploy'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                // Run tests (if applicable)
-                sh "${MAVEN_HOME}/bin/mvn test"
+                script {
+                    withMaven(maven: 'Maven') {
+                        sh 'mvn test'
+                    }
+                }
             }
         }
     }
 
     post {
         success {
-            // Actions to be taken if the pipeline succeeds
-            echo 'Build and tests passed! Deploying...'
+            echo 'Build and tests passed! Ready for deployment.'
         }
         failure {
-            // Actions to be taken if the pipeline fails
             echo 'Build or tests failed. Please check the logs for details.'
         }
     }
