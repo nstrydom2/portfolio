@@ -25,13 +25,11 @@ pipeline {
                     def repository = 'java-portfolio'
 
                     // Authenticate with CodeArtifact using AWS CLI
-                    sh 'aws codeartifact login --tool maven --domain ${domain} --repository ${repository}'
+                    sh 'aws codeartifact login --tool maven --domain arun --repository java-portfolio'
 
                     // Publish artifacts using Maven
-                    sh 'mvn deploy -Dmaven.repo.local=target/repository'
+                    sh 'mvn deploy arn:aws:codeartifact:us-east-1:776099960247:domain/arun'
                 }
             }
         }
-
-
-}  
+}
